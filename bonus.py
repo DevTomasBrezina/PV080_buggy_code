@@ -28,16 +28,16 @@ class Profile:
 
 def merge(src, dst):
     # Recursive merge function
-    for k, v in src.items():
+    for key, value in src.items():
         if hasattr(dst, "__getitem__"):
-            if dst.get(k) and type(v) == dict:
-                merge(v, dst.get(k))
+            if dst.get(key) and type(value) == dict:
+                merge(value, dst.get(key))
             else:
-                dst[k] = v
-        elif hasattr(dst, k) and type(v) == dict:
-            merge(v, getattr(dst, k))
+                dst[key] = value
+        elif hasattr(dst, key) and type(value) == dict:
+            merge(value, getattr(dst, key))
         else:
-            setattr(dst, k, v)
+            setattr(dst, key, value)
 
 
 profile = Profile()
